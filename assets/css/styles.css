@@ -1,0 +1,291 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    font-family: "Merriweather Sans", sans-serif;
+    color: #4c6986;
+}
+
+.top-class{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.top-class .btn-togle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4.8rem;
+    position: relative;
+    height: 101px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
+    z-index: 10;
+}
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.btn-togle .fa-sun{
+    color: orange;
+}
+
+.btn-togle .fa-moon{
+    color: rgb(161, 177, 161);
+    
+}
+
+.btn-togle .fa-adjust{
+    transform: rotate(180deg);
+}
+
+/* Hide default HTML checkbox */
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider{
+    background-color: #2196F3;
+}
+
+input:focus + .slider{
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+.wrapper{
+    display: flex;
+    height: 800px;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding:40px;
+}
+
+.title{
+    max-width: 500px; 
+ }
+
+h1{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.restart{
+    width: 175px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #4c6986;
+    border-radius: 50px;
+    transition: all 0.2 ease;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.restart:hover{
+    background-color: #4c6986;
+    color: white;
+}
+
+.game{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.header{
+    display: flex;
+    color: #9a9a9a;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.header .player-X{
+    flex: 1;
+    border-bottom: 5px solid #eee;
+    padding-bottom: 8px;
+    margin-right: 10px;
+}
+
+.player-X.active{
+    color:#42bed7;
+    border-color: #42bed7;
+}
+.tile-x{
+    color: #42bed7;
+}
+
+.header .player-O{
+    flex: 1;
+    border-bottom: 5px solid #eee;
+    padding-bottom: 8px;
+    margin-left:10px ;
+}
+
+.player-O.active{
+    color: #d7bafb;
+    border-color: #d7bafb;
+}
+.tile-o{
+    color: #d7bafb;
+}
+
+.tile-winner span{
+    color: #23ce6b;
+    
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap:0;
+    flex-grow: 1;
+}
+
+.board-tile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+.board-tile:not(:nth-child(3n)){
+    border-right: 2px solid rgba(137, 163, 189, 0.58);
+}
+
+.board-tile:not(:nth-last-child(-n+3)){
+    border-bottom: 3px solid rgba(137, 163, 189, 0.58);
+}
+
+.board-tile:hover{
+    background: #eee;
+}
+
+
+@media only screen and (max-width:1000px){
+    .wrapper{
+        flex-direction: column;
+        display: block;
+    }
+
+    .game{
+        width: 70vw;
+        height: 70vw;   
+    }
+
+    .title{
+        margin: 0 auto;
+    }
+    
+    h1{
+        font-size: 30px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .left-sec{
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+
+    .restart{
+        margin: 10px auto;
+    }
+}
+
+@media only screen and (max-width:490px){
+    .board-tile {
+        font-size: 50px;
+    }
+}
+
+
+@media only screen and (max-width:330px){
+    .board-tile {
+        font-size: 45px;
+    }
+}
+
+
+body .off{
+    background-color: black;
+    color: white;
+}
+body.off div {
+    background-color: black;
+    color: -3;
+    border-color: white;
+}
+
+body.off .board-tile{
+    /* background-color: rgba(128, 128, 128, 0.673);
+     */
+     border-color: white;
+}
+body.off .restart:hover{
+    background-color: white;
+    color: black;
+}
+.off .fa-sun{
+    color: orange;
+    opacity: 0.5;
+}
+.off .fa-moon{
+    color: white;
+}
+.btn-togle .fas{
+    margin: 0 10px;
+}
